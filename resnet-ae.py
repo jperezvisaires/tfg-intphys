@@ -16,6 +16,10 @@ resnet = ResNet50(include_top = False,
                   input_tensor = resnet_input,
                   input_shape = resnet_input_shape)
 
+# Freeze ResNet weights so they don't change during training.
+for layer in resnet.layers:
+    layer.trainable = False
+
 # resnet.summary()
 
 loss = "mse"
