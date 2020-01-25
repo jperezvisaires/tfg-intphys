@@ -25,6 +25,7 @@ for layer in resnet.layers:
 loss = "mse"
 optimizer = Adam
 
+# Define the autoencoder behind the ResNet neural network.
 main_input = resnet_input
 
 x = main_input
@@ -34,15 +35,15 @@ x = Dense(units = 128)(x)
 x = Dense(units = 8192)(x)
 x = Reshape(target_shape = (8, 8, 128))(x)
 x = UpSampling2D(size = (2, 2), data_format = "channels_last", interpolation = "nearest")(x)
-x = Conv2D(filters = 128, kernel_size = (3, 3), strides = (1, 1), data_format = "channels_last")(x)
+x = Conv2D(filters = 128, kernel_size = (3, 3), strides = (1, 1), padding = "same", data_format = "channels_last")(x)
 x = BatchNormalization()(x)
 x = ReLU()(x)
 x = UpSampling2D(size = (2, 2), data_format = "channels_last", interpolation = "nearest")(x)
-x = Conv2D(filters = 64, kernel_size = (3, 3), strides = (1, 1), data_format = "channels_last")(x)
+x = Conv2D(filters = 64, kernel_size = (3, 3), strides = (1, 1), padding = "same", data_format = "channels_last")(x)
 x = BatchNormalization()(x)
 x = ReLU()(x)
 x = UpSampling2D(size = (2, 2), data_format = "channels_last", interpolation = "nearest")(x)
-x = Conv2D(filters = 3, kernel_size = (3, 3), strides = (1, 1), data_format = "channels_last")(x)
+x = Conv2D(filters = 3, kernel_size = (3, 3), strides = (1, 1), padding = "same", data_format = "channels_last")(x)
 x = BatchNormalization()(x)
 x = ReLU()(x)
 x = Activation("sigmoid")(x)
