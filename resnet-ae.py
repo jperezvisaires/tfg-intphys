@@ -43,7 +43,7 @@ x = Conv2D(filters = 64, kernel_size = (3, 3), strides = (1, 1), padding = "same
 x = BatchNormalization()(x)
 x = ReLU()(x)
 x = UpSampling2D(size = (2, 2), data_format = "channels_last", interpolation = "nearest")(x)
-x = Conv2D(filters = 3, kernel_size = (3, 3), strides = (1, 1), padding = "same", data_format = "channels_last")(x)
+x = Conv2D(filters = 1, kernel_size = (3, 3), strides = (1, 1), padding = "same", data_format = "channels_last")(x)
 x = BatchNormalization()(x)
 x = ReLU()(x)
 x = Activation("sigmoid")(x)
