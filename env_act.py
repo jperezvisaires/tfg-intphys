@@ -2,4 +2,4 @@
 
 from os import system as sys
 
-sys("/bin/bash --rcfile ~/environments/TFG/bin/activate")
+sys("/bin/bash --rcfile ~/TFG/bin/activate")
